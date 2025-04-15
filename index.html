@@ -851,8 +851,29 @@ input[type="time"] {
     }
 
     @media (max-width: 480px) {
+
+      h1 {
+    font-size: 30px !important;
+    margin:13px;
+  }
+
+  .toolbar {
+    gap: 16px;
+    padding-bottom: 20px;
+  }
+
+  .toolbar button {
+    font-size: 14px;
+    padding: 12px 18px;
+    max-width: 100%;
+    border-radius: 18px;
+  }
+
+  .toolbar svg {
+    width: 16px;
+    height: 16px;
+  }
       body { padding: 28px; }
-      h1 { font-size: 24px; }
       .task-form { padding: 24px; gap: 12px; }
       .task-form input:not([type="date"],[type="time"]), .task-form select, .task-form input[type="date"], .task-form input[type="time"] { padding: 10px; height: 48px; font-size: 13px; }
       .task-form button { padding: 10px 20px; font-size: 13px; height: 48px; max-width: 160px; }
@@ -872,22 +893,20 @@ input[type="time"] {
       .logo-container {
     display: flex;
     align-items: center;
+    margin-left: 60px:
     gap: 4px;
 
 
   }
 
   .logo-image {
-    width: 70px;
-    height: 70px;
+    width: 100px;
+    height: 100px;
     margin: 0;
-    margin-right: -20px;
+    margin-right: -40px;
     margin-bottom: -6px;
   }
 
-  h1 {
-    font-size: 20px; /* valor fijo para evitar crecimiento inesperado */
-  }
 
     }
   </style>
