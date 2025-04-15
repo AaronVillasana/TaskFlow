@@ -1,9 +1,4 @@
-<script type="text/javascript">
-    var gk_fileData = {};
-    function loadFileData(filename) {
-      return gk_fileData[filename] || "";
-    }
-    </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -62,49 +57,48 @@
 
     .logo-container {
       display: flex;
-      
       align-items: center;
       justify-content: center;
       margin-bottom: 24px;
     }
 
     .logo-image {
-      margin-right: -35px;
+      margin-right: -40px;
       margin-bottom: -6px;
       width: 150px;
       height: 150px;
       object-fit: contain;
       transition: filter 0.9s ease-in-out;
-      filter: invert(48%) sepia(99%) saturate(2476%) hue-rotate(210deg) brightness(100%) contrast(100%); /* Blue tint for light theme */
+      filter: invert(48%) sepia(99%) saturate(2476%) hue-rotate(210deg) brightness(100%) contrast(100%);
     }
 
     [data-theme="dark"] .logo-image {
-      filter: invert(100%) /* Cyan tint for dark theme */
+      filter: invert(100%)
     }
 
     h1 {
-  text-align: center;
-  font-size: clamp(50px, 4vw, 28px);
-  font-weight: 700;
-  transition: background-color 0s linear !important; /* solo deja otras transiciones */
-}
+      margin-bottom: 6px;
+      margin-right: 70px;
+      text-align: center;
+      font-size: clamp(50px, 4vw, 28px);
+      font-weight: 700;
+      transition: background-color 0s linear !important;
+    }
 
-
-.toolbar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 32px;
-  padding-bottom: 16px;
-  border-bottom: 0.5px solid rgba(229,231,235,0.5);
-  width: 100%;
-  max-width: 720px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
+    .toolbar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 0.5px solid rgba(229,231,235,0.5);
+      width: 100%;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
     [data-theme="dark"] .toolbar {
       border-bottom: 0.5px solid rgba(59,71,98,0.5);
@@ -165,6 +159,21 @@
     }
 
     [data-theme="dark"] .toolbar .dark-mode:hover {
+      background-color: rgba(75,110,250,0.1);
+    }
+
+    .toolbar .filter {
+      background-color: transparent;
+      color: var(--secondary-gray);
+    }
+
+    .toolbar .filter:hover {
+      background-color: rgba(0,102,255,0.1);
+      color: var(--accent-blue);
+      transform: scale(1.05);
+    }
+
+    [data-theme="dark"] .toolbar .filter:hover {
       background-color: rgba(75,110,250,0.1);
     }
 
@@ -235,109 +244,104 @@
       transform: translateX(-50%) translateY(0);
     }
 
-/* INPUTS DE TEXTO Y SELECT */
-.task-form input:not([type="date"],[type="time"]),
-.task-form select {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 14px;
-  font-size: 14px;
-  font-weight: 400;
-  background-color: rgba(255, 255, 255, 0.95);
-  color: var(--text-primary);
-  transition: var(--transition);
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 16px;
-}
+    .task-form input:not([type="date"],[type="time"]),
+    .task-form select {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 400;
+      background-color: rgba(255, 255, 255, 0.95);
+      color: var(--text-primary);
+      transition: var(--transition);
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 16px;
+    }
 
-[data-theme="dark"] .task-form input:not([type="date"],[type="time"]),
-[data-theme="dark"] .task-form select {
-  background-color: rgba(26, 35, 56, 0.95);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-}
+    [data-theme="dark"] .task-form input:not([type="date"],[type="time"]),
+    [data-theme="dark"] .task-form select {
+      background-color: rgba(26, 35, 56, 0.95);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    }
 
-/* INPUT TIPO FECHA */
-.task-form input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 14px;
-  font-size: 14px;
-  font-weight: 400;
-  background-color: rgba(255, 255, 255, 0.95);
-  color: var(--text-primary);
-  transition: var(--transition);
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpath d='M6 2v2M18 2v2M3 7h18M5 7v14a2 2 0 002 2h10a2 2 0 002-2V7'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 16px;
-}
+    .task-form input[type="date"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 400;
+      background-color: rgba(255, 255, 255, 0.95);
+      color: var(--text-primary);
+      transition: var(--transition);
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpath d='M6 2v2M18 2v2M3 7h18M5 7v14a2 2 0 002 2h10a2 2 0 002-2V7'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 16px;
+    }
 
-/* INPUT TIPO HORA */
-.task-form input[type="time"] {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 14px;
-  font-size: 14px;
-  font-weight: 400;
-  background-color: rgba(255, 255, 255, 0.95);
-  color: var(--text-primary);
-  transition: var(--transition);
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 6v6l4 2'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 16px;
-}
+    .task-form input[type="time"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 400;
+      background-color: rgba(255, 255, 255, 0.95);
+      color: var(--text-primary);
+      transition: var(--transition);
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 6v6l4 2'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 16px;
+    }
 
-/* MODO OSCURO PARA FECHA Y HORA */
-[data-theme="dark"] .task-form input[type="date"] {
-  background-color: rgba(26, 35, 56, 0.95);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpath d='M6 2v2M18 2v2M3 7h18M5 7v14a2 2 0 002 2h10a2 2 0 002-2V7'/%3E%3C/svg%3E");
-}
+    [data-theme="dark"] .task-form input[type="date"] {
+      background-color: rgba(26, 35, 56, 0.95);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Cpath d='M6 2v2M18 2v2M3 7h18M5 7v14a2 2 0 002 2h10a2 2 0 002-2V7'/%3E%3C/svg%3E");
+    }
 
-[data-theme="dark"] .task-form input[type="time"] {
-  background-color: rgba(26, 35, 56, 0.95);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 6v6l4 2'/%3E%3C/svg%3E");
-}
+    [data-theme="dark"] .task-form input[type="time"] {
+      background-color: rgba(26, 35, 56, 0.95);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 6v6l4 2'/%3E%3C/svg%3E");
+    }
 
-/* ENFOQUE */
-.task-form input:focus:not([type="date"],[type="time"]),
-.task-form select:focus,
-.task-form input[type="date"]:focus,
-.task-form input[type="time"]:focus {
-  outline: none;
-  background-color: rgba(255, 255, 255, 1);
-  box-shadow: 0 0 6px rgba(0, 102, 255, 0.25);
-}
+    .task-form input:focus:not([type="date"],[type="time"]),
+    .task-form select:focus,
+    .task-form input[type="date"]:focus,
+    .task-form input[type="time"]:focus {
+      outline: none;
+      background-color: rgba(255, 255, 255, 1);
+      box-shadow: 0 0 6px rgba(0, 102, 255, 0.25);
+    }
 
-[data-theme="dark"] .task-form input:focus:not([type="date"],[type="time"]),
-[data-theme="dark"] .task-form select:focus,
-[data-theme="dark"] .task-form input[type="date"]:focus,
-[data-theme="dark"] .task-form input[type="time"]:focus {
-  background-color: rgba(51, 65, 85, 1);
-  box-shadow: 0 0 6px rgba(75, 110, 250, 0.25);
-}
+    [data-theme="dark"] .task-form input:focus:not([type="date"],[type="time"]),
+    [data-theme="dark"] .task-form select:focus,
+    [data-theme="dark"] .task-form input[type="date"]:focus,
+    [data-theme="dark"] .task-form input[type="time"]:focus {
+      background-color: rgba(51, 65, 85, 1);
+      box-shadow: 0 0 6px rgba(75, 110, 250, 0.25);
+    }
 
-/* ELIMINAR ÍCONOS NATIVOS DE LOS INPUTS */
-input[type="date"]::-webkit-calendar-picker-indicator,
-input[type="time"]::-webkit-calendar-picker-indicator {
-  opacity: 0;
-  display: none;
-  -webkit-appearance: none;
-}
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator {
+      opacity: 0;
+      cursor: pointer;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
 
-input[type="date"],
-input[type="time"] {
-  -moz-appearance: textfield;
-}
-
+    input[type="date"],
+    input[type="time"] {
+      -moz-appearance: textfield;
+    }
 
     .task-form input::placeholder {
       color: var(--text-secondary);
@@ -350,7 +354,6 @@ input[type="time"] {
       gap: 6px;
       align-items: flex-end;
       justify-content: flex-start;
-
     }
 
     .effort-bar {
@@ -389,7 +392,6 @@ input[type="time"] {
       width: 100%;
       max-width: 200px;
       margin: 20px auto 0 auto;
-
     }
 
     .task-form button:hover {
@@ -482,6 +484,13 @@ input[type="time"] {
 
     [data-theme="dark"] .task-item.completed {
       background-color: rgba(26, 35, 56, 0.9);
+    }
+
+    .task-item.low-stress-hidden {
+      opacity: 0.3;
+      pointer-events: none;
+      filter: grayscale(50%);
+      transition: opacity 0.4s ease-in-out;
     }
 
     .task-item .task-checkbox {
@@ -806,6 +815,15 @@ input[type="time"] {
       75% { transform: translateX(2px); }
     }
 
+    @keyframes slideDown {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(20px); opacity: 0; }
+    }
+
+    .task-item.completed-animating {
+      animation: slideDown 0.3s ease-in-out forwards;
+    }
+
     .invalid {
       animation: shake 0.3s ease-in-out;
       box-shadow: 0 0 6px rgba(248,113,113,0.5);
@@ -851,28 +869,28 @@ input[type="time"] {
     }
 
     @media (max-width: 480px) {
-
       h1 {
         font-size: 35px !important;
-        margin-left: -25px;
-  }
+        margin-left: -30px;
+      }
 
-  .toolbar {
-    gap: 16px;
-    padding-bottom: 20px;
-  }
+      .toolbar {
+        gap: 16px;
+        padding-bottom: 20px;
+      }
 
-  .toolbar button {
-    font-size: 14px;
-    padding: 12px 18px;
-    max-width: 100%;
-    border-radius: 18px;
-  }
+      .toolbar button {
+        font-size: 14px;
+        padding: 12px 18px;
+        max-width: 100%;
+        border-radius: 18px;
+      }
 
-  .toolbar svg {
-    width: 16px;
-    height: 16px;
-  }
+      .toolbar svg {
+        width: 16px;
+        height: 16px;
+      }
+
       body { padding: 28px; }
       .task-form { padding: 24px; gap: 12px; }
       .task-form input:not([type="date"],[type="time"]), .task-form select, .task-form input[type="date"], .task-form input[type="time"] { padding: 10px; height: 48px; font-size: 13px; }
@@ -891,24 +909,20 @@ input[type="time"] {
       .effort-bar.level-5 { height: 24px; }
 
       .logo-container {
-    display: flex;
-    align-items: center;
-    margin-left: -45px:
-    gap: 4px;
+        display: flex;
+        align-items: center;
+        margin-left: -12px;
+        gap: 4px;
+      }
 
-
-  }
-
-  .logo-image {
-    width: 100px;
-    height: 100px;
-    margin: 0;
-    margin-left: -25px;
-    margin-bottom: -6px;
-  }
-
-
-        }    
+      .logo-image {
+        width: 100px;
+        height: 100px;
+        margin: 0;
+        margin-left: 57px;
+        margin-bottom: -6px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -939,6 +953,12 @@ input[type="time"] {
         <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
       </svg>
       Oscuro
+    </button>
+    <button class="filter" id="filterButton" onclick="toggleFilterModal()" aria-label="Filtrar tareas">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 3H2l8 9.46V19a2 2 0 002 2h0a2 2 0 002-2v-6.54L22 3z"/>
+      </svg>
+      Filtrar
     </button>
   </div>
   <div class="task-form">
@@ -1003,11 +1023,11 @@ input[type="time"] {
     Normal
     <span class="tooltip-text">
       Normal: Todas las tareas, ordenadas por prioridad.<br>
-      Bajo Estrés: Solo tareas de hoy, menos si superan 4h.
+      Bajo Estrés: Solo tareas de hoy, menos si superan 4h (otras con opacidad reducida).
     </span>
   </div>
   <div class="low-stress-note" id="lowStressNote">
-    Bajo Estrés: Tareas de hoy, priorizando las más ligeras si exceden 4h.
+    Bajo Estrés: Tareas de hoy, priorizando las más ligeras si exceden 4h. Otras tareas aparecen con opacidad reducida.
   </div>
   <ul class="task-list" id="taskList" role="list"></ul>
 
@@ -1065,6 +1085,52 @@ input[type="time"] {
     </div>
   </div>
 
+  <div class="modal" id="filterModal">
+    <div class="modal-content">
+      <h2>Filtrar Tareas</h2>
+      <div class="form-group">
+        <label for="filterHours">
+          Duración
+          <span class="tooltip-text">Filtrar por número de horas</span>
+        </label>
+        <select id="filterHours">
+          <option value="">Todas</option>
+          <option value="1-4">1-4 horas</option>
+          <option value="5-8">5-8 horas</option>
+          <option value="9+">9+ horas</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="filterEffort">
+          Esfuerzo
+          <span class="tooltip-text">Filtrar por nivel de esfuerzo</span>
+        </label>
+        <select id="filterEffort">
+          <option value="">Todos</option>
+          <option value="1-2">Bajo (1-2)</option>
+          <option value="3-4">Medio (3-4)</option>
+          <option value="5">Alto (5)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="filterDate">
+          Fecha
+          <span class="tooltip-text">Filtrar por proximidad de fecha</span>
+        </label>
+        <select id="filterDate">
+          <option value="">Todas</option>
+          <option value="today">Hoy</option>
+          <option value="thisWeek">Esta semana</option>
+          <option value="thisMonth">Este mes</option>
+        </select>
+      </div>
+      <div class="buttons">
+        <button class="cancel" onclick="closeFilterModal()">Cancelar</button>
+        <button class="save" onclick="applyFilters()">Aplicar</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     var gk_fileData = {};
     function loadFileData(filename) {
@@ -1074,6 +1140,11 @@ input[type="time"] {
     let isLowStressMode = JSON.parse(localStorage.getItem("lowStressMode")) || false;
     let isDarkMode = JSON.parse(localStorage.getItem("darkMode")) || window.matchMedia("(prefers-color-scheme: dark)").matches;
     let editingTaskId = null;
+    let currentFilters = {
+      hours: "",
+      effort: "",
+      date: ""
+    };
 
     function populateHoursSelects() {
       const taskHoursSelect = document.getElementById("taskHours");
@@ -1122,9 +1193,11 @@ input[type="time"] {
     }
 
     function isValidDateTime(dateStr, timeStr) {
-      const date = new Date(dateStr + 'T' + (timeStr || '00:00'));
+      const [year, month, day] = dateStr.split('-').map(Number);
+      const [hours, minutes] = timeStr ? timeStr.split(':').map(Number) : [0, 0];
+      const inputDate = new Date(year, month - 1, day, hours, minutes);
       const now = new Date();
-      return date instanceof Date && !isNaN(date) && date >= now;
+      return inputDate instanceof Date && !isNaN(inputDate) && inputDate >= now;
     }
 
     function isValidHours(hours) {
@@ -1136,9 +1209,18 @@ input[type="time"] {
       return !isNaN(effort) && effort >= 1 && effort <= 5;
     }
 
+    function formatDateForInput(date) {
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0');
+      const day = String(date.getDate()).padStart(2, '0');
+      return `${year}-${month}-${day}`;
+    }
+
     function calculatePriority(deadline, time, hours, effort) {
       const now = new Date();
-      const dueDate = new Date(deadline + 'T' + time);
+      const [year, month, day] = deadline.split('-').map(Number);
+      const [hoursTime, minutes] = time ? time.split(':').map(Number) : [0, 0];
+      const dueDate = new Date(year, month - 1, day, hoursTime, minutes);
       const hoursRemaining = Math.max(0, (dueDate - now) / (1000 * 60 * 60));
       return (24 - hoursRemaining) * (hours * effort / 5);
     }
@@ -1203,14 +1285,18 @@ input[type="time"] {
         return;
       }
 
+      const [year, month, day] = deadline.split('-').map(Number);
+      const localDate = new Date(year, month - 1, day);
+      const formattedDeadline = formatDateForInput(localDate);
+
       const task = {
         id: Date.now().toString(),
         name,
-        deadline,
+        deadline: formattedDeadline,
         time,
         hours,
         effort,
-        priority: calculatePriority(deadline, time, hours, effort),
+        priority: calculatePriority(formattedDeadline, time, hours, effort),
         completed: false
       };
 
@@ -1279,6 +1365,10 @@ input[type="time"] {
         return;
       }
 
+      const [year, month, day] = deadline.split('-').map(Number);
+      const localDate = new Date(year, month - 1, day);
+      const formattedDeadline = formatDateForInput(localDate);
+
       let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
       const taskIndex = tasks.findIndex(t => t.id === editingTaskId);
       if (taskIndex === -1) {
@@ -1289,11 +1379,11 @@ input[type="time"] {
       tasks[taskIndex] = {
         ...tasks[taskIndex],
         name,
-        deadline,
+        deadline: formattedDeadline,
         time,
         hours,
         effort,
-        priority: calculatePriority(deadline, time, hours, effort)
+        priority: calculatePriority(formattedDeadline, time, hours, effort)
       };
 
       localStorage.setItem("tasks", JSON.stringify(tasks));
@@ -1369,27 +1459,98 @@ input[type="time"] {
       renderTasks();
     }
 
+    function toggleFilterModal() {
+      document.getElementById("filterModal").style.display = "flex";
+    }
+
+    function closeFilterModal() {
+      document.getElementById("filterModal").style.display = "none";
+    }
+
+    function applyFilters() {
+      currentFilters.hours = document.getElementById("filterHours").value;
+      currentFilters.effort = document.getElementById("filterEffort").value;
+      currentFilters.date = document.getElementById("filterDate").value;
+      closeFilterModal();
+      renderTasks();
+    }
+
+    function filterTasks(tasks) {
+      let filteredTasks = [...tasks];
+
+      if (currentFilters.hours) {
+        filteredTasks = filteredTasks.filter(task => {
+          if (currentFilters.hours === "1-4") return task.hours >= 1 && task.hours <= 4;
+          if (currentFilters.hours === "5-8") return task.hours >= 5 && task.hours <= 8;
+          if (currentFilters.hours === "9+") return task.hours >= 9;
+          return true;
+        });
+      }
+
+      if (currentFilters.effort) {
+        filteredTasks = filteredTasks.filter(task => {
+          if (currentFilters.effort === "1-2") return task.effort >= 1 && task.effort <= 2;
+          if (currentFilters.effort === "3-4") return task.effort >= 3 && task.effort <= 4;
+          if (currentFilters.effort === "5") return task.effort === 5;
+          return true;
+        });
+      }
+
+      if (currentFilters.date) {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const weekEnd = new Date(today);
+        weekEnd.setDate(today.getDate() + 7);
+        const monthEnd = new Date(today);
+        monthEnd.setMonth(today.getMonth() + 1);
+
+        filteredTasks = filteredTasks.filter(task => {
+          const [year, month, day] = task.deadline.split('-').map(Number);
+          const dueDate = new Date(year, month - 1, day);
+          dueDate.setHours(0, 0, 0, 0);
+          if (currentFilters.date === "today") return dueDate.toDateString() === today.toDateString();
+          if (currentFilters.date === "thisWeek") return dueDate >= today && dueDate <= weekEnd;
+          if (currentFilters.date === "thisMonth") return dueDate >= today && dueDate <= monthEnd;
+          return true;
+        });
+      }
+
+      return filteredTasks;
+    }
+
+    function getLowStressTasks(tasks) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      let lowStressTasks = tasks.filter(task => {
+        const [year, month, day] = task.deadline.split('-').map(Number);
+        const dueDate = new Date(year, month - 1, day);
+        dueDate.setHours(0, 0, 0, 0);
+        return dueDate.toDateString() === today.toDateString() && !task.completed;
+      });
+
+      let totalHours = lowStressTasks.reduce((sum, task) => sum + task.hours, 0);
+      if (totalHours > 4) {
+        lowStressTasks.sort((a, b) => a.effort - b.effort);
+        let accumulatedHours = 0;
+        lowStressTasks = lowStressTasks.filter(task => {
+          accumulatedHours += task.hours;
+          return accumulatedHours <= 4;
+        });
+      }
+
+      return lowStressTasks;
+    }
+
     function renderTasks() {
       const taskList = document.getElementById("taskList");
       let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+      let lowStressTaskIds = [];
+
+      tasks = filterTasks(tasks);
 
       if (isLowStressMode) {
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
-        tasks = tasks.filter(task => {
-          const dueDate = new Date(task.deadline);
-          return dueDate.toDateString() === today.toDateString() && !task.completed;
-        });
-
-        let totalHours = tasks.reduce((sum, task) => sum + task.hours, 0);
-        if (totalHours > 4) {
-          tasks.sort((a, b) => a.effort - b.effort);
-          let accumulatedHours = 0;
-          tasks = tasks.filter(task => {
-            accumulatedHours += task.hours;
-            return accumulatedHours <= 4;
-          });
-        }
+        const lowStressTasks = getLowStressTasks(tasks);
+        lowStressTaskIds = lowStressTasks.map(task => task.id);
       }
 
       tasks.sort((a, b) => {
@@ -1405,12 +1566,15 @@ input[type="time"] {
       taskList.innerHTML = tasks.map(task => {
         const effortLevel = task.effort <= 2 ? "low" : task.effort <= 4 ? "medium" : "high";
         const timeDisplay = task.time ? ` a las ${task.time}` : "";
+        const isLowStressHidden = isLowStressMode && !lowStressTaskIds.includes(task.id);
+        const [year, month, day] = task.deadline.split('-').map(Number);
+        const dueDate = new Date(year, month - 1, day);
         return `
-          <li class="task-item ${effortLevel} ${task.completed ? "completed" : ""}">
+          <li class="task-item ${effortLevel} ${task.completed ? "completed" : ""} ${isLowStressHidden ? "low-stress-hidden" : ""}">
             <input type="checkbox" class="task-checkbox" ${task.completed ? "checked" : ""} onclick="toggleTaskCompletion('${task.id}')" aria-label="Marcar tarea como completada">
             <div class="task-details ${task.completed ? "completed" : ""}">
               <strong>${task.name}</strong>
-              <span>${new Date(task.deadline).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })}${timeDisplay} [${task.hours}h] Esfuerzo ${task.effort}</span>
+              <span>${dueDate.toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })}${timeDisplay} [${task.hours}h] Esfuerzo ${task.effort}</span>
             </div>
             <div class="task-actions">
               <button class="edit" onclick="editTask('${task.id}')" aria-label="Editar tarea">Editar</button>
